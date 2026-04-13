@@ -55,6 +55,9 @@ class History(db.Model):
     pitch = db.relationship("Pitch", backref="history_entries")
     pirana = db.relationship("Pirana", backref="history_entries")
 
+with app.app_context():
+    db.create_all()
+
 
 def calc_valuation(amount, equity): return amount / (equity / 100) if equity > 0 else 0
 
